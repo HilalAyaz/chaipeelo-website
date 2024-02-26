@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/LogoImage.png";
 import { FaCoffee } from "react-icons/fa";
+import { PropTypes } from "prop-types";
 
 const Menus = [
   {
@@ -20,7 +21,7 @@ const Menus = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ openModal }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -72,7 +73,10 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <button className="bg-gradient-to-r from-secondary via-secondary/60 to-secondary rounded-lg px-5 py-2.5 text-center duration-500 items-center flex hover:text-black text-gray-200 gap-2 font-semibold">
+            <button
+              onClick={openModal}
+              className="bg-gradient-to-r from-secondary via-secondary/60 to-secondary rounded-lg px-5 py-2.5 text-center duration-500 items-center flex hover:text-black text-gray-200 gap-2 font-semibold"
+            >
               Reserve <FaCoffee className="text-xl" />
             </button>
           </div>
@@ -80,6 +84,10 @@ const Navbar = () => {
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Navbar;

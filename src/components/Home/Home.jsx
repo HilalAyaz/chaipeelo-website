@@ -1,6 +1,7 @@
 import HeroImage from "../../assets/HeroImage.png";
+import { PropTypes } from "prop-types";
 
-const Home = () => {
+const Home = ({ openModal }) => {
   return (
     <div className="min-h-[550px] h-screen bg-brandDark/90 flex flex-col justify-center items-center text-white px-4 sm:px-8">
       <div className="container mx-auto mt-20 lg:px-16 xl:px-24">
@@ -35,6 +36,7 @@ const Home = () => {
               </span>
             </h1>
             <button
+              onClick={openModal}
               data-aos="fade-up"
               data-aos-delay="500"
               className="bg-gradient-to-r from-secondary via-secondary/60 to-secondary text-white rounded-lg px-6 py-3 text-center duration-500 hover:text-black font-semibold"
@@ -57,6 +59,9 @@ const Home = () => {
       </div>
     </div>
   );
+};
+Home.propTypes = {
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Home;

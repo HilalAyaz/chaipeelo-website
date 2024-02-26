@@ -1,5 +1,5 @@
 import AOS from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
@@ -8,8 +8,11 @@ import Banner from "./components/Banner/Banner";
 import DownloadBanner from "./components/DownloadBanner/DownloadSection";
 import Testimonial from "./components/Testimonial/Testimonial";
 import Footer from "./components/Footer/Footer";
+import Modal from "./components/Modal/Modal";
 
 const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     AOS.init({
       offset: 100,
@@ -17,16 +20,26 @@ const App = () => {
       easing: "ease-in",
       delay: 100,
     });
-  });
+  }, []);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="overflow-hidden">
-      <Navbar />
-      <Home />
-      <Services />
-      <Banner />
-      <DownloadBanner />
-      <Testimonial />
+      <Navbar openModal={openModal} />
+      <Home openModal={openModal} />
+      <Services openModal={openModal} />
+      <Banner openModal={openModal} />
+      <DownloadBanner openModal={openModal} />
+      <Testimonial openModal={openModal} />
       <Footer />
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };
