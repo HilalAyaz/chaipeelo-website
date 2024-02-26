@@ -93,8 +93,8 @@ const Testimonial = () => {
               {TestData.map((data) => {
                 return (
                   <div key={data.id} className="my-6 ">
-                    <div className="flex flex-col  gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl bg-primary/20 relative">
-                      <div className=" mb-4">
+                    <div className="flex flex-col  gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl bg-primary/30 relative h-[300px]">
+                      <div className=" shadow-2xl rounded-full w-20 h-20 ">
                         <img
                           src={data.image}
                           alt=""
